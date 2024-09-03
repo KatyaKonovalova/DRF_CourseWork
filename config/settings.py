@@ -8,15 +8,12 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = []
-
-
 
 
 INSTALLED_APPS = [
@@ -27,6 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "habits",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -58,7 +57,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
 
 
 DATABASES = {
@@ -98,9 +96,12 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 STATIC_URL = "static/"
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "users.User"
